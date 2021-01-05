@@ -16,12 +16,9 @@ def euclid_dist(d1, d2):
 stock_daily_price = {}
 companies_stock_code = []
 
-file_max_count = 500 #try with small number of file
 for (dirpath, dirnames, filenames) in walk('./data/'):
     filenames.sort()
     for f in filenames:
-        if file_max_count == 0:
-            break
         companies_stock_code.append(f.split('.')[0])
         temp_price = []
         #read line
@@ -30,7 +27,6 @@ for (dirpath, dirnames, filenames) in walk('./data/'):
             for j in range(0,245,1):
                 temp_price.append(float(prices[j]))
         stock_daily_price[f.split('.')[0]] = temp_price
-        file_max_count = file_max_count - 1 #will remove at final version
 
 # the price of stocks are in different range, and we cluster the timeserie data 
 # #so that we check the movement of the price over period of 128 days
